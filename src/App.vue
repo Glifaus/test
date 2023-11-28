@@ -1,28 +1,37 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <survey :survey="survey" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import "survey-core/defaultV2.css";
+import { Model } from "survey-core";
+import { Survey } from "survey-vue-ui";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
+    Survey
+  },
+  data() {
+    return {
+      survey: new Model({
+        title: "Encuesta de Prueba",
+        questions: [
+          {
+            type: "text",
+            name: "nombre",
+            title: "¿Cuál es tu nombre?"
+          },
+          // Agrega más preguntas aquí
+        ]
+      })
+    };
   }
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+/* Estilos personalizados aquí */
 </style>
